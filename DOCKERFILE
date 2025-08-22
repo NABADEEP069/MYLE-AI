@@ -1,0 +1,29 @@
+FROM python:3.11-slim
+
+# Set environment variables to prevent Python from writing pyc files and buffering
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install system dependencies (ffmpeg, build-essential, git)
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
+  ffmpeg \
+  build-essential \
+  git \
+  && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements.txt and install Python dependencies
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the app files into the container
+COPY . /app/
+
+# Expose port for FastAPI (Uvicorn will run on this port)
+EXPOSE 8000
+
+# Command to run the FastAPI app with uvicorn (single worker by default)
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
