@@ -5,6 +5,7 @@ import SpeechToTextInput from "./components/SpeechToTextInput";
 import { PrimaryButton } from "./components/Button";
 import Header from "./components/Header";
 import Soild from "./components/Soild";
+
 interface Reference {
   title: string;
   url: string;
@@ -66,7 +67,7 @@ export default function Home() {
 
       const data: ResultData = await response.json();
       setResult(data);
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setIsLoading(false);
@@ -76,9 +77,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen  [background:radial-gradient(125%_100%_at_50%_0%,_#FFF_6.32%,_#E0F0FF_29.28%,_#E7EFFD_68.68%,_#FFF_100%)] font-mono">
+
       <Header/>
       <main className="max-w-4xl mx-auto px-8 py-16 text-center">
       <Soild/>
+
 
         {/* AI Diagnostic Section */}
         <div className=" rounded-lg p-8 shadow-2xl shadow-amber-300/60 max-w-4xl mx-auto mb-16 text-left">
