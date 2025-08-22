@@ -66,7 +66,7 @@ export default function Home() {
 
       const data: ResultData = await response.json();
       setResult(data);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setIsLoading(false);
@@ -79,8 +79,6 @@ export default function Home() {
       <Header/>
       <main className="max-w-4xl mx-auto px-8 py-16 text-center">
       <Soild/>
-        <div id="features" className="flex flex-wrap justify-center gap-3 mb-16">
-        </div>
 
         {/* AI Diagnostic Section */}
         <div className=" rounded-lg p-8 shadow-2xl shadow-amber-300/60 max-w-4xl mx-auto mb-16 text-left">

@@ -13,9 +13,9 @@ export default function Header() {
           <span className="text-xl font-medium text-black">MYLE AI </span>
         </div>
        <nav className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-8 text-sm">
-          <a href="#features" className="cursor-pointer text-black hover:text-gray-700">Product</a>
-          <a href="#criteria" className="cursor-pointer text-black hover:text-gray-700">Criteria</a>
-          <a href="#about" className="cursor-pointer text-black hover:text-gray-700">About</a>
+          <a href="#features" className="cursor-pointer  text-black hover:text-gray-700">Product</a>
+          <a href="#criteria" className="cursor-pointer  text-black hover:text-gray-700">Criteria</a>
+          <a href="#about" className="cursor-pointer     text-black hover:text-gray-700">About</a>
         </nav>
 
         <a href="#features" className="no-underline">

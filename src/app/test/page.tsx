@@ -2,6 +2,9 @@
 
 import { useHotkeys } from "react-hotkeys-hook";
 import { useRef, useState, FormEvent } from "react";
+import Header from "../components/Header";
+import Soild from "../components/Soild";
+import {Mic, MicOff } from "lucide-react"
 
 interface Reference {
   title: string;
@@ -98,21 +101,21 @@ function SpeechToTextRecorder({ onTranscription }: { onTranscription: (text: str
   };
 
   return (
-    <div className="mt-4">
+    <div className="mt-5">
       {!recording ? (
         <button
           onClick={startRecording}
-          className="px-3 py-1 bg-green-600 text-white rounded"
+          className="p-4 bg-slate-600 text-white rounded-full"
           disabled={loading}
         >
-          🎤 Start Recording
+          <Mic />
         </button>
       ) : (
         <button
           onClick={stopRecording}
-          className="px-3 py-1 bg-red-600 text-white rounded"
+          className="p-4  bg-red-600 text-white rounded-full"
         >
-          ⏹ Stop Recording
+         <MicOff />
         </button>
       )}
       {loading && <p className="text-sm mt-2">⏳ Transcribing...</p>}
@@ -159,7 +162,7 @@ export default function Home() {
 
       const data: ResultData = await response.json();
       setResult(data);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setIsLoading(false);
@@ -167,9 +170,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-100 font-mono">
+    <div className="min-h-screen [background:radial-gradient(125%_100%_at_50%_0%,_#FFF_6.32%,_#E0F0FF_29.28%,_#E7EFFD_68.68%,_#FFF_100%)] font-mono">
+       <Header/>
       <main className="max-w-4xl mx-auto px-8 py-16 text-center">
-        <h1 className="text-4xl font-bold mb-6">AI Diagnosis Assistant</h1>
+
+     <Soild/>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <textarea
             className="w-full p-3 border border-gray-300 rounded-lg"
@@ -179,9 +184,8 @@ export default function Home() {
             rows={5}
             required
           />
-
-          {/* 🎤 Integrated Whisper Recorder */}
-          <SpeechToTextRecorder
+          <div className="flex gap-6 items-center justify-center">
+             <SpeechToTextRecorder
             onTranscription={(text) =>
               setSymptoms((prev) => (prev ? prev + " " + text : text))
             }
@@ -195,6 +199,7 @@ export default function Home() {
           >
             {isLoading ? "Analyzing..." : "Get Diagnosis"}
           </button>
+          </div>
         </form>
 
         {error && <p className="text-red-600 mt-4">{error}</p>}
@@ -209,7 +214,7 @@ export default function Home() {
             )}
           </div>
         )}
-      </main>
+    </main>
     </div>
   );
 }
