@@ -2,20 +2,18 @@
 import { useHotkeys } from "react-hotkeys-hook";
 import { useRef, useState, FormEvent } from 'react';
 import SpeechToTextInput from "./components/SpeechToTextInput";
-import { SpeechToTextRecorder } from "./components/record";
-
-
+import { PrimaryButton } from "./components/Button";
+import Header from "./components/Header";
+import Soild from "./components/Soild";
 interface Reference {
   title: string;
   url: string;
 }
-
 interface Differential {
   disease: string;
   confidence: number;
   rationale: string;
 }
-
 interface PrimaryTreatment {
   disease: string;
   first_line_medication: string;
@@ -23,7 +21,6 @@ interface PrimaryTreatment {
   common_precautions: string[];
   monitoring_or_followup: string;
 }
-
 interface ResultData {
   patient_summary?: string;
   differential?: Differential[];
@@ -76,74 +73,13 @@ export default function Home() {
     }
   };
 
-  const PrimaryButton = ({ children, onClick, disabled }: { children: React.ReactNode; onClick?: () => void; disabled?: boolean }) => (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className="bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-    >
-      {children}
-    </button>
-  );
-
-  const OutlineButton = ({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) => (
-    <button
-      onClick={onClick}
-      className="border border-black text-black px-4 py-2 text-sm rounded-full bg-transparent hover:bg-black/10 flex items-center gap-2 transition-colors"
-    >
-      {children}
-    </button>
-  );
 
   return (
     <div className="min-h-screen  [background:radial-gradient(125%_100%_at_50%_0%,_#FFF_6.32%,_#E0F0FF_29.28%,_#E7EFFD_68.68%,_#FFF_100%)] font-mono">
-      <header className="flex justify-between items-center px-8 py-6">
-        <div className="flex items-center space-x-6">
-          <div className="w-8 h-8 grid grid-cols-3 gap-1">
-            {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-1.5 h-1.5 bg-black rounded-full"></div>
-            ))}
-          </div>
-          <span className="text-xl font-medium text-black">MYLE AI </span>
-        </div>
-       <nav className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-8 text-sm">
-          <a href="#features" className="cursor-pointer text-black hover:text-gray-700">Product</a>
-          <a href="#criteria" className="cursor-pointer text-black hover:text-gray-700">Criteria</a>
-          <a href="#about" className="cursor-pointer text-black hover:text-gray-700">About</a>
-        </nav>
-
-        <a href="#features" className="no-underline">
-          <PrimaryButton>
-            Analyze Now
-          </PrimaryButton>
-        </a>
-      </header>
-
-
+      <Header/>
       <main className="max-w-4xl mx-auto px-8 py-16 text-center">
-        <div className="inline-block bg-blue-300 shadow-xl/30  text-slate-600 font-bold  text-xs px-4 py-2 rounded-full mb-8 tracking-wide backdrop-blur-sm">
-          Built with great minds !
-        </div>
-
-
-        <h1 className="text-4xl md:text-6xl font-medium text-black mb-6 leading-tight">
-          AI that provides<br />
-          diagnostic information in real-time
-        </h1>
-
-
-        <p className="text-lg md:text-xl text-gray-700 mb-12 max-w-2xl mx-auto">
-          Enter your symptoms below to get started.
-          <strong className="block mt-2">
-            Always consult a healthcare professional for medical advice.
-          </strong>
-        </p>
-
-        {/* Feature Buttons */}
+      <Soild/>
         <div id="features" className="flex flex-wrap justify-center gap-3 mb-16">
-
-          {/* eyat 3ta button dim for style */}
-
         </div>
 
         {/* AI Diagnostic Section */}
