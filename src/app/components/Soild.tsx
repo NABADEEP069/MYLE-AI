@@ -7,7 +7,7 @@ export default function Soild() {
         </div>
 
 
-        <h1 className="text-4xl md:text-6xl font-medium text-black mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-medium  text-black mb-6 leading-tight">
           AI that provides<br />
           diagnostic information in real-time
         </h1>
