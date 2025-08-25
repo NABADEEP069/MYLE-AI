@@ -67,7 +67,7 @@ export default function Home() {
 
       const data: ResultData = await response.json();
       setResult(data);
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message);
     } finally {
       setIsLoading(false);
