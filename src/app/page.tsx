@@ -36,14 +36,14 @@ interface ResultData {
   critical_warning?: string;
 }
 
-// 👇 Reusable Whisper Speech-to-Text Recorder
+
 function SpeechToTextRecorder({ onTranscription }: { onTranscription: (text: string) => void }) {
   const [loading, setLoading] = useState(false);
   const [recording, setRecording] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
 
-  // Change this to your backend/ngrok URL
+  
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const startRecording = async () => {
@@ -123,7 +123,7 @@ function SpeechToTextRecorder({ onTranscription }: { onTranscription: (text: str
   );
 }
 
-// 👇 Main Diagnosis Page
+
 export default function Home() {
   const [symptoms, setSymptoms] = useState<string>("");
   const [result, setResult] = useState<ResultData | null>(null);
